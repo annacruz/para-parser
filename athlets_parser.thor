@@ -1,7 +1,8 @@
 require 'roo'
+require 'thor'
 
-class AthletsParser
-
+class AthletsParser < Thor
+  desc "parse", "parse the spreadsheet into an athlets object"
   def parse(spreadsheet)
     xlsx = Roo::Excelx.new(spreadsheet)
     sheet = xlsx.sheet('athlets')
@@ -12,7 +13,7 @@ class AthletsParser
 
     rows = sheet.parser(fields)
 
-    print rows
+    puts rows
   end
 
 end
